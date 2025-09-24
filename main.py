@@ -1,16 +1,17 @@
 from bs4 import BeautifulSoup
-from utils import get_session, get_url, write_csv, scrap_item_details, get_last_page
+from utils import get_session, get_url, write_csv, scrap_item_details, get_last_page, random_delay
 
 session = get_session()
 page = 1
 csv_file = 'products.csv'
 url = get_url(page)
 products = []
-last_page = get_last_page(url, session)
-
+random_delay()
+last_page = get_last_page(url)
 
 while page <= last_page:
     url = get_url(page)
+    random_delay()
     response = session.get(url)
     if response.status_code != 200:
         continue
