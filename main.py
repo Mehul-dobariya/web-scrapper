@@ -5,11 +5,11 @@ session = get_session()
 page = 1
 csv_file = 'products.csv'
 url = get_url(page)
-products = []
 random_delay()
 last_page = get_last_page(url)
 
 while page <= last_page:
+    products = []
     url = get_url(page)
     random_delay()
     response = session.get(url)
